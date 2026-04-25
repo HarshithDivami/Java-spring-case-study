@@ -1,0 +1,12 @@
+package com.harshith.assigment.common.enums;
+
+public enum EmailType {
+    WELCOME,
+    MATCH_PREDICTION_REMINDER,
+    LEAGUE_PREDICTION_REMINDER,
+    RESULT_PUBLISHED,
+    LEADERBOARD_UPDATED,
+    SEASON_STARTED,
+    SEASON_CLOSED,
+    BULK_NOTIFICATION
+}

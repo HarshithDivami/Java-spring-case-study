@@ -1,0 +1,430 @@
+{
+  "info": {
+    "name": "Family League – IPL 2026",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url",   "value": "http://localhost:8080" },
+    { "key": "token",      "value": "" },
+    { "key": "league_id",  "value": "0425c103-847e-4a97-a3eb-ac69c830510b" },
+    { "key": "season_id",  "value": "bc9ff1b3-77d8-460c-b12b-b7eb480e2aa4" },
+    { "key": "match_id",   "value": "" },
+    { "key": "match_id_2", "value": "" },
+    { "key": "user_token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "01 – ADMIN AUTH",
+      "item": [
+        {
+          "name": "Login as Admin",
+          "event": [{ "listen": "test", "script": { "exec": [
+            "var res = pm.response.json();",
+            "pm.environment.set('token', res.data.token);",
+            "console.log('Admin token saved');"
+          ]}}],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"usernameOrEmail\": \"admin\",\n  \"password\": \"Admin@1234\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/auth/login", "host": ["{{base_url}}"], "path": ["api","v1","auth","login"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 – SEASON SETUP (Admin)",
+      "item": [
+        {
+          "name": "Add MI to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/9fd51ecb-8759-432b-af59-4d02a1ddcef4", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","9fd51ecb-8759-432b-af59-4d02a1ddcef4"] }
+          }
+        },
+        {
+          "name": "Add CSK to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/2218d255-7c02-432a-8f52-76f22b6a397e", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","2218d255-7c02-432a-8f52-76f22b6a397e"] }
+          }
+        },
+        {
+          "name": "Add RCB to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/90ab2701-2f0c-48ba-9329-7d997e1782e4", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","90ab2701-2f0c-48ba-9329-7d997e1782e4"] }
+          }
+        },
+        {
+          "name": "Add KKR to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/5164e552-77c0-4e9c-9dfb-53b66b9c434a", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","5164e552-77c0-4e9c-9dfb-53b66b9c434a"] }
+          }
+        },
+        {
+          "name": "Add DC to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/7569acd6-8f1e-451b-b46f-5091816a1bb4", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","7569acd6-8f1e-451b-b46f-5091816a1bb4"] }
+          }
+        },
+        {
+          "name": "Add RR to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/db62d914-6f02-44ad-a279-a47315ed1896", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","db62d914-6f02-44ad-a279-a47315ed1896"] }
+          }
+        },
+        {
+          "name": "Add SRH to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/6143e86e-adc6-48e8-8608-c7c82527579c", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","6143e86e-adc6-48e8-8608-c7c82527579c"] }
+          }
+        },
+        {
+          "name": "Add PBKS to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/202d49bd-a3a7-4bde-b3ef-5d5acfc77034", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","202d49bd-a3a7-4bde-b3ef-5d5acfc77034"] }
+          }
+        },
+        {
+          "name": "Add LSG to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/b511b994-e212-494f-87cc-6a3eea2a5484", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","b511b994-e212-494f-87cc-6a3eea2a5484"] }
+          }
+        },
+        {
+          "name": "Add GT to Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/teams/e92b8c28-da94-44ae-adcc-17e36b4d7812", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","teams","e92b8c28-da94-44ae-adcc-17e36b4d7812"] }
+          }
+        },
+        {
+          "name": "Start Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/start", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","start"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 – CREATE MATCHES (Admin)",
+      "item": [
+        {
+          "name": "Create Match 1 – MI vs CSK",
+          "event": [{ "listen": "test", "script": { "exec": [
+            "var res = pm.response.json();",
+            "pm.environment.set('match_id', res.data.id);",
+            "console.log('match_id saved:', res.data.id);"
+          ]}}],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",   "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"homeTeamId\": \"9fd51ecb-8759-432b-af59-4d02a1ddcef4\",\n  \"awayTeamId\": \"2218d255-7c02-432a-8f52-76f22b6a397e\",\n  \"matchNumber\": 1,\n  \"matchType\": \"LEAGUE\",\n  \"venue\": \"Wankhede Stadium, Mumbai\",\n  \"scheduledAt\": \"2026-03-22T19:30:00+05:30\",\n  \"predictionLockAt\": \"2026-03-22T18:30:00+05:30\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/matches", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","matches"] }
+          }
+        },
+        {
+          "name": "Create Match 2 – RCB vs KKR",
+          "event": [{ "listen": "test", "script": { "exec": [
+            "var res = pm.response.json();",
+            "pm.environment.set('match_id_2', res.data.id);",
+            "console.log('match_id_2 saved:', res.data.id);"
+          ]}}],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",   "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"homeTeamId\": \"90ab2701-2f0c-48ba-9329-7d997e1782e4\",\n  \"awayTeamId\": \"5164e552-77c0-4e9c-9dfb-53b66b9c434a\",\n  \"matchNumber\": 2,\n  \"matchType\": \"LEAGUE\",\n  \"venue\": \"M. Chinnaswamy Stadium, Bengaluru\",\n  \"scheduledAt\": \"2026-03-23T15:30:00+05:30\",\n  \"predictionLockAt\": \"2026-03-23T14:30:00+05:30\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/matches", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","matches"] }
+          }
+        },
+        {
+          "name": "Get All Matches",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/matches", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","matches"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 – USER AUTH",
+      "item": [
+        {
+          "name": "Register New User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"newuser\",\n  \"email\": \"newuser@familyleague.local\",\n  \"password\": \"User@1234\",\n  \"displayName\": \"New User\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/auth/register", "host": ["{{base_url}}"], "path": ["api","v1","auth","register"] }
+          }
+        },
+        {
+          "name": "Login as harshith",
+          "event": [{ "listen": "test", "script": { "exec": [
+            "var res = pm.response.json();",
+            "pm.environment.set('user_token', res.data.token);",
+            "console.log('user_token saved');"
+          ]}}],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"usernameOrEmail\": \"harshith\",\n  \"password\": \"User@1234\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/auth/login", "host": ["{{base_url}}"], "path": ["api","v1","auth","login"] }
+          }
+        },
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/users/me", "host": ["{{base_url}}"], "path": ["api","v1","users","me"] }
+          }
+        },
+        {
+          "name": "Update My Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{user_token}}" },
+              { "key": "Content-Type",   "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"displayName\": \"Harshith K\",\n  \"avatarUrl\": \"\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/users/me", "host": ["{{base_url}}"], "path": ["api","v1","users","me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 – BROWSE (User)",
+      "item": [
+        {
+          "name": "Get All Teams",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/teams?size=10", "host": ["{{base_url}}"], "path": ["api","v1","teams"], "query": [{ "key": "size", "value": "10" }] }
+          }
+        },
+        {
+          "name": "Get MI Players",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/teams/9fd51ecb-8759-432b-af59-4d02a1ddcef4/players?size=30", "host": ["{{base_url}}"], "path": ["api","v1","teams","9fd51ecb-8759-432b-af59-4d02a1ddcef4","players"], "query": [{ "key": "size", "value": "30" }] }
+          }
+        },
+        {
+          "name": "Get CSK Players",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/teams/2218d255-7c02-432a-8f52-76f22b6a397e/players?size=30", "host": ["{{base_url}}"], "path": ["api","v1","teams","2218d255-7c02-432a-8f52-76f22b6a397e","players"], "query": [{ "key": "size", "value": "30" }] }
+          }
+        },
+        {
+          "name": "Get All Leagues",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues", "host": ["{{base_url}}"], "path": ["api","v1","leagues"] }
+          }
+        },
+        {
+          "name": "Get Season Details",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}"] }
+          }
+        },
+        {
+          "name": "Get Match 1 Details",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/matches/{{match_id}}", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","matches","{{match_id}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 – SUBMIT PREDICTIONS (User)",
+      "item": [
+        {
+          "name": "Submit Match 1 Prediction (harshith)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{user_token}}" },
+              { "key": "Content-Type",   "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"predictedWinnerId\": \"2218d255-7c02-432a-8f52-76f22b6a397e\",\n  \"predictedTossWinnerId\": \"9fd51ecb-8759-432b-af59-4d02a1ddcef4\",\n  \"predictedPlayerOfMatchId\": \"140620bf-7f55-4ec6-b48e-ca89df0e6f90\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/matches/{{match_id}}/prediction", "host": ["{{base_url}}"], "path": ["api","v1","matches","{{match_id}}","prediction"] }
+          }
+        },
+        {
+          "name": "Get My Match 1 Prediction",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/matches/{{match_id}}/prediction", "host": ["{{base_url}}"], "path": ["api","v1","matches","{{match_id}}","prediction"] }
+          }
+        },
+        {
+          "name": "Submit League Season Prediction (harshith)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{user_token}}" },
+              { "key": "Content-Type",   "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"teamPositions\": [\n    { \"teamId\": \"2218d255-7c02-432a-8f52-76f22b6a397e\", \"position\": 1 },\n    { \"teamId\": \"9fd51ecb-8759-432b-af59-4d02a1ddcef4\", \"position\": 2 },\n    { \"teamId\": \"90ab2701-2f0c-48ba-9329-7d997e1782e4\", \"position\": 3 },\n    { \"teamId\": \"5164e552-77c0-4e9c-9dfb-53b66b9c434a\", \"position\": 4 }\n  ]\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/prediction", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","prediction"] }
+          }
+        },
+        {
+          "name": "Get My League Prediction",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/prediction", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","prediction"] }
+          }
+        },
+        {
+          "name": "Get All Match 1 Predictions (all users)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/matches/{{match_id}}/predictions", "host": ["{{base_url}}"], "path": ["api","v1","matches","{{match_id}}","predictions"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 – PUBLISH RESULT (Admin)",
+      "item": [
+        {
+          "name": "Login as Admin (refresh token)",
+          "event": [{ "listen": "test", "script": { "exec": [
+            "var res = pm.response.json();",
+            "pm.environment.set('token', res.data.token);"
+          ]}}],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"usernameOrEmail\": \"admin\",\n  \"password\": \"Admin@1234\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/auth/login", "host": ["{{base_url}}"], "path": ["api","v1","auth","login"] }
+          }
+        },
+        {
+          "name": "Publish Match 1 Result – CSK won",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",   "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"winningTeamId\": \"2218d255-7c02-432a-8f52-76f22b6a397e\",\n  \"tossWinningTeamId\": \"9fd51ecb-8759-432b-af59-4d02a1ddcef4\",\n  \"playerOfMatchId\": \"140620bf-7f55-4ec6-b48e-ca89df0e6f90\",\n  \"tie\": false,\n  \"resultSummary\": \"CSK won by 5 wickets\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/matches/{{match_id}}/result", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","matches","{{match_id}}","result"] }
+          }
+        },
+        {
+          "name": "Get Match 1 Result",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/matches/{{match_id}}/result", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","matches","{{match_id}}","result"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "08 – LEADERBOARD",
+      "item": [
+        {
+          "name": "Get Season Leaderboard",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/leaderboard?size=50", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","leaderboard"], "query": [{ "key": "size", "value": "50" }] }
+          }
+        },
+        {
+          "name": "Get My Rank",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{user_token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/seasons/{{season_id}}/leaderboard/me", "host": ["{{base_url}}"], "path": ["api","v1","seasons","{{season_id}}","leaderboard","me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "09 – ADMIN MANAGEMENT",
+      "item": [
+        {
+          "name": "List All Users",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/users?size=20", "host": ["{{base_url}}"], "path": ["api","v1","users"], "query": [{ "key": "size", "value": "20" }] }
+          }
+        },
+        {
+          "name": "Send Bulk Notification",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type",   "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"userIds\": [\n    \"b19b8805-1c47-4e4b-999f-4c5cd0177aab\",\n    \"b626a114-c7e0-45c5-90e5-3712ca0ef2bd\"\n  ],\n  \"emailType\": \"ANNOUNCEMENT\",\n  \"subject\": \"IPL 2026 Match 1 – MI vs CSK Tonight!\",\n  \"body\": \"Match 1 starts at 7:30 PM. Submit your predictions now!\"\n}" },
+            "url": { "raw": "{{base_url}}/api/v1/notifications/bulk", "host": ["{{base_url}}"], "path": ["api","v1","notifications","bulk"] }
+          }
+        },
+        {
+          "name": "Get Email Logs",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/notifications/logs", "host": ["{{base_url}}"], "path": ["api","v1","notifications","logs"] }
+          }
+        },
+        {
+          "name": "Close Season",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/api/v1/leagues/{{league_id}}/seasons/{{season_id}}/close", "host": ["{{base_url}}"], "path": ["api","v1","leagues","{{league_id}}","seasons","{{season_id}}","close"] }
+          }
+        }
+      ]
+    }
+  ]
+}
