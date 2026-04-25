@@ -3,6 +3,10 @@ package com.harshith.assigment.common.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+/**
+ * Base runtime exception for all domain errors.
+ * Carries an {@link HttpStatus} that {@link GlobalExceptionHandler} maps directly to the HTTP response.
+ */
 @Getter
 public class AppException extends RuntimeException {
 
@@ -13,6 +17,7 @@ public class AppException extends RuntimeException {
         this.status = status;
     }
 
+    /** Defaults to 500 Internal Server Error when no status is specified. */
     public AppException(String message) {
         this(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }

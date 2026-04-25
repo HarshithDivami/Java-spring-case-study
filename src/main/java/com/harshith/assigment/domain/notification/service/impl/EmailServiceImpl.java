@@ -2,6 +2,7 @@ package com.harshith.assigment.domain.notification.service.impl;
 
 import com.harshith.assigment.common.enums.EmailStatus;
 import com.harshith.assigment.common.enums.EmailType;
+import com.harshith.assigment.common.exception.ResourceNotFoundException;
 import com.harshith.assigment.config.AppProperties;
 import com.harshith.assigment.domain.leaderboard.entity.UserSeasonPoints;
 import com.harshith.assigment.domain.leaderboard.repository.UserSeasonPointsRepository;
@@ -72,7 +73,7 @@ public class EmailServiceImpl implements EmailService {
     @Transactional
     public void sendMatchResultToAllUsers(UUID matchId) {
         MatchResult result = matchResultRepository.findByMatchId(matchId)
-                .orElseThrow(() -> new RuntimeException("Result not found for match: " + matchId));
+                .orElseThrow(() -> new ResourceNotFoundException("MatchResult", "matchId", matchId));
         Match match = result.getMatch();
         UUID seasonId = match.getLeagueSeason().getId();
 

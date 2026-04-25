@@ -15,6 +15,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * Intercepts every request, extracts the Bearer token from the {@code Authorization} header,
+ * validates it, and populates the {@link SecurityContextHolder} so downstream handlers
+ * see an authenticated principal.
+ * Disabled accounts are recognised but deliberately not authenticated (isEnabled check).
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -40,6 +46,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         chain.doFilter(request, response);
     }
 
+    /** Strips the {@code "Bearer "} prefix from the Authorization header; returns {@code null} if absent. */
     private String resolveToken(HttpServletRequest request) {
         String bearer = request.getHeader("Authorization");
         if (StringUtils.hasText(bearer) && bearer.startsWith("Bearer ")) {

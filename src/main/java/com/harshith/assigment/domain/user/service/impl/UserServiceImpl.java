@@ -1,6 +1,7 @@
 package com.harshith.assigment.domain.user.service.impl;
 
 import com.harshith.assigment.common.enums.RoleName;
+import com.harshith.assigment.common.exception.AppException;
 import com.harshith.assigment.common.exception.ConflictException;
 import com.harshith.assigment.common.exception.ResourceNotFoundException;
 import com.harshith.assigment.domain.user.dto.*;
@@ -66,7 +67,7 @@ public class UserServiceImpl implements UserService {
             throw new ConflictException("Email already registered: " + request.getEmail());
         }
         var userRole = roleRepository.findByName(RoleName.ROLE_USER)
-                .orElseThrow(() -> new RuntimeException("Default role not found"));
+                .orElseThrow(() -> new AppException("Default ROLE_USER not found — check seed data"));
         User user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
